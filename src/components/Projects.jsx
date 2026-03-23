@@ -8,7 +8,7 @@ const projects = [
   },
   {
     title: "Grouque AI",
-    desc: "AI-powered assistant with JWT authentication, chat interface, dashboard & AI API integration.",
+    desc: "AI-powered assistant with Spring Security, chat interface, dashboard & AI API integration.",
     url: "https://github.com/Rahul-315/Ai-Chat-bot-Backend"
   },
   {
