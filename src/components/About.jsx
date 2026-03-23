@@ -20,7 +20,7 @@ const About = () => {
         className="max-w-4xl mx-auto glass p-10 rounded-2xl shadow-xl"
       >
         <p className="text-lg leading-8 text-gray-300">
-          I am an <span className="text-indigo-400 font-semibold">Associate Software Engineer</span> 
+          I am an <span className="text-indigo-400 font-semibold">Associate Software Engineer </span> 
           at Atenas Code Pvt Ltd, specializing in{" "}
           <span className="text-indigo-400 font-semibold">
             Java Full Stack Development
