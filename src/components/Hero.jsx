@@ -74,14 +74,14 @@ const Hero = () => {
             <div className="absolute inset-0 bg-indigo-500 blur-3xl opacity-20 rounded-3xl"></div>
 
             {/* Video */}
-            <video
-              controls
-              playsInline
-              className="relative w-full rounded-3xl border-2 border-indigo-500 shadow-2xl"
-            >
-              <source src={introVideo} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+          <video
+  controls
+  preload="metadata"
+  className="relative w-full rounded-3xl border-2 border-indigo-500 shadow-2xl"
+>
+  <source src={introVideo} type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
 
           </div>
         </motion.div>
