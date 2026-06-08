@@ -76,8 +76,6 @@ const Hero = () => {
             {/* Video */}
             <video
               controls
-              autoPlay
-              muted
               playsInline
               className="relative w-full rounded-3xl border-2 border-indigo-500 shadow-2xl"
             >
