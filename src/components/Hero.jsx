@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
-import profileImg from "../assets/rahul.jpg";
 import resume from "../assets/resume.pdf";
 import introVideo from "../assets/portfolio_intro.mp4";
 
@@ -8,7 +7,7 @@ const Hero = () => {
   return (
     <section className="relative z-20 min-h-screen flex items-center justify-center px-6 overflow-hidden">
       
-      {/* Background Blobs (non-click blocking) */}
+      {/* Background Blobs */}
       <div className="blob pointer-events-none top-10 left-10"></div>
       <div className="blob pointer-events-none bottom-20 right-10 bg-purple-500"></div>
 
@@ -31,7 +30,7 @@ const Hero = () => {
               words={[
                 "Java Full Stack Developer",
                 "Spring Boot Architect",
-                "web developer",
+                "Web Developer",
                 "JWT Security Expert",
               ]}
               loop
@@ -39,10 +38,9 @@ const Hero = () => {
             />
           </p>
 
-          {/* ✅ BUTTONS */}
+          {/* Buttons */}
           <div className="mt-10 flex gap-6 flex-wrap justify-center md:justify-start">
             
-            {/* ✅ View Projects → GitHub */}
             <a
               href="https://github.com/Rahul-315"
               target="_blank"
@@ -52,7 +50,6 @@ const Hero = () => {
               🚀 View Projects
             </a>
 
-            {/* ✅ Download Resume */}
             <a
               href={resume}
               download="Rahul_Resume.pdf"
@@ -62,39 +59,32 @@ const Hero = () => {
             </a>
 
           </div>
-          <div className="mt-8">
-  <h3 className="text-lg font-semibold mb-3 text-indigo-300">
-    🎥 Introduction Video
-  </h3>
-
-  <video
-    controls
-    className="w-full max-w-xl rounded-2xl shadow-2xl border border-indigo-500"
-  >
-    <source src={introVideo} type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
-</div>
         </div>
 
-        {/* RIGHT SIDE */}
+        {/* RIGHT SIDE - INTRO VIDEO */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
           className="flex justify-center"
         >
-          <div className="relative group">
+          <div className="relative w-full max-w-xl">
             
-            {/* Glow */}
-            <div className="absolute inset-0 bg-indigo-500 blur-3xl opacity-30 rounded-full pointer-events-none"></div>
+            {/* Glow Effect */}
+            <div className="absolute inset-0 bg-indigo-500 blur-3xl opacity-20 rounded-3xl"></div>
 
-            {/* Image */}
-            <img
-              src={profileImg}
-              alt="Rahul"
-              className="relative w-72 h-72 object-cover rounded-full border-4 border-indigo-500 shadow-2xl transition duration-300 group-hover:scale-105"
-            />
+            {/* Video */}
+            <video
+              controls
+              autoPlay
+              muted
+              playsInline
+              className="relative w-full rounded-3xl border-2 border-indigo-500 shadow-2xl"
+            >
+              <source src={introVideo} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+
           </div>
         </motion.div>
 
