@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
-import resume from "../assets/Rahul_Resume_Final(1).pdf";
+import resume from "../assets/Rahul_Resume_Final (1).pdf";
 import introVideo from "../assets/portfolio_intro.mp4";
 
 const Hero = () => {
@@ -27,6 +27,7 @@ const Hero = () => {
 
           <p className="mt-6 text-xl md:text-2xl text-gray-300">
             <Typewriter
+              key="typewriter"
               words={[
                 "Java Full Stack Developer",
                 "Spring Boot Architect",
@@ -52,7 +53,7 @@ const Hero = () => {
 
             <a
               href={resume}
-              download="Rahul_Resume_Final(1).pdf"
+              download="Rahul_Resume_Final (1).pdf"
               className="border border-green-500 px-8 py-3 rounded-xl hover:bg-green-500 transition hover:scale-105"
             >
               📄 Download Resume
@@ -74,14 +75,15 @@ const Hero = () => {
             <div className="absolute inset-0 bg-indigo-500 blur-3xl opacity-20 rounded-3xl"></div>
 
             {/* Video */}
-          <video
-  controls
-  preload="metadata"
-  className="relative w-full rounded-3xl border-2 border-indigo-500 shadow-2xl"
->
-  <source src={introVideo} type="video/mp4" />
-  Your browser does not support the video tag.
-</video>
+            <video
+              controls
+              preload="metadata"
+              aria-label="Rahul's portfolio introduction video"
+              className="relative w-full rounded-3xl border-2 border-indigo-500 shadow-2xl"
+            >
+              <source src={introVideo} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
 
           </div>
         </motion.div>
