@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
 import profileImg from "../assets/rahul.jpg";
 import resume from "../assets/resume.pdf";
+import introVideo from "../assets/portfolio_intro.mp4";
 
 const Hero = () => {
   return (
@@ -61,6 +62,19 @@ const Hero = () => {
             </a>
 
           </div>
+          <div className="mt-8">
+  <h3 className="text-lg font-semibold mb-3 text-indigo-300">
+    🎥 Introduction Video
+  </h3>
+
+  <video
+    controls
+    className="w-full max-w-xl rounded-2xl shadow-2xl border border-indigo-500"
+  >
+    <source src={introVideo} type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+</div>
         </div>
 
         {/* RIGHT SIDE */}
