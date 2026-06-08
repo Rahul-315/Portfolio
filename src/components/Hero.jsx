@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
-import resume from "../assets/resume.pdf";
+import resume from "../assets/Rahul_Resume_Final(1).pdf";
 import introVideo from "../assets/portfolio_intro.mp4";
 
 const Hero = () => {
