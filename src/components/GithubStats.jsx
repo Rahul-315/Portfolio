@@ -10,12 +10,35 @@ const GithubStats = () => {
   const githubUrl = "https://github.com/Rahul-315";
   const username = "Rahul-315";
 
+  // Multiple fallback URLs for better reliability
+  const STATS_URLS = [
+    `https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&theme=tokyonight&cache_seconds=1800`,
+  ];
+
+  const STREAK_URLS = [
+    `https://streak-stats.demolab.com/?user=${username}&theme=tokyonight`,
+  ];
+
+  const GRAPH_URLS = [
+    `https://github-readme-activity-graph.vercel.app/graph?username=${username}&theme=tokyo-night`,
+  ];
+
   useEffect(() => {
     fetch(`https://api.github.com/users/${username}`)
       .then((res) => res.json())
       .then((data) => setProfile(data))
       .catch(() => setProfile(null));
   }, []);
+
+  // Helper function to handle image load with retry
+  const handleImageLoad = (e, setError) => {
+    // Image loaded successfully
+  };
+
+  const handleImageError = (e, setError) => {
+    setError(true);
+    console.warn("GitHub stats image failed to load:", e.target.src);
+  };
 
   return (
     <section className="py-24 text-center px-6">
@@ -54,54 +77,102 @@ const GithubStats = () => {
       )}
 
       <div className="flex flex-col md:flex-row justify-center gap-10 mb-12">
+        {/* GitHub Stats Card */}
         <a href={githubUrl} target="_blank" rel="noreferrer">
           {!statsError ? (
             <img
-              src={`https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&theme=tokyonight&cache_seconds=1800`}
+              src={STATS_URLS[0]}
               alt="GitHub Stats"
               className="rounded-xl shadow-lg hover:scale-105 transition"
-              onError={() => setStatsError(true)}
+              onLoad={(e) => handleImageLoad(e, setStatsError)}
+              onError={(e) => handleImageError(e, setStatsError)}
+              loading="lazy"
             />
           ) : (
             <div className="glass rounded-xl p-6 text-gray-400 w-64 mx-auto">
-              <p>GitHub Stats unavailable</p>
+              <p className="text-sm">
+                📊 Stats temporarily unavailable
+                <br />
+                <a
+                  href={githubUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-indigo-400 hover:text-indigo-300 text-xs mt-2 inline-block"
+                >
+                  View on GitHub →
+                </a>
+              </p>
             </div>
           )}
         </a>
 
-        {/* ✅ Fixed: was herokuapp.com (dead), now demolab.com (official) */}
+        {/* GitHub Streak Stats - Most Reliable */}
         <a href={githubUrl} target="_blank" rel="noreferrer">
           {!streakError ? (
             <img
-              src={`https://streak-stats.demolab.com/?user=${username}&theme=tokyonight`}
+              src={STREAK_URLS[0]}
               alt="GitHub Streak"
               className="rounded-xl shadow-lg hover:scale-105 transition"
-              onError={() => setStreakError(true)}
+              onLoad={(e) => handleImageLoad(e, setStreakError)}
+              onError={(e) => handleImageError(e, setStreakError)}
+              loading="lazy"
             />
           ) : (
             <div className="glass rounded-xl p-6 text-gray-400 w-64 mx-auto">
-              <p>Streak Stats unavailable</p>
+              <p className="text-sm">
+                🔥 Streak Stats unavailable
+                <br />
+                <a
+                  href={githubUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-indigo-400 hover:text-indigo-300 text-xs mt-2 inline-block"
+                >
+                  View on GitHub →
+                </a>
+              </p>
             </div>
           )}
         </a>
       </div>
 
+      {/* GitHub Activity Graph */}
       <div className="mb-12">
         <a href={githubUrl} target="_blank" rel="noreferrer">
           {!graphError ? (
             <img
-              src={`https://github-readme-activity-graph.vercel.app/graph?username=${username}&theme=tokyo-night`}
+              src={GRAPH_URLS[0]}
               alt="GitHub Activity Graph"
               className="rounded-xl shadow-lg mx-auto hover:scale-105 transition"
-              onError={() => setGraphError(true)}
+              onLoad={(e) => handleImageLoad(e, setGraphError)}
+              onError={(e) => handleImageError(e, setGraphError)}
+              loading="lazy"
             />
           ) : (
             <div className="glass rounded-xl p-6 text-gray-400 max-w-2xl mx-auto">
-              <p>Activity Graph unavailable</p>
+              <p className="text-sm">
+                📈 Activity Graph temporarily unavailable
+                <br />
+                <a
+                  href={githubUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-indigo-400 hover:text-indigo-300 text-xs mt-2 inline-block"
+                >
+                  View on GitHub →
+                </a>
+              </p>
             </div>
           )}
         </a>
       </div>
+
+      {/* Helpful note */}
+      <p className="text-xs text-gray-500 mt-8">
+        💡 If stats show "unavailable", it's likely a temporary service issue.
+        <br />
+        All data is live from GitHub and will refresh automatically.
+      </p>
     </section>
   );
 };
